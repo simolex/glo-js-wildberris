@@ -2,13 +2,12 @@ const getGoods = () => {
   const links = document.querySelectorAll(".navigation-link");
   const buttonViewAll = document.querySelector(".more");
 
-  buttonViewAll.addEventListener("click", () => {
-    getData();
-  });
+  // buttonViewAll.addEventListener("click", () => {
+  //   getData();
+  // });
 
   const renderGoods = (goods) => {
     const goodsContainer = document.querySelector(".long-goods-list");
-
     goodsContainer.innerHTML = "";
 
     goods.forEach((good) => {
@@ -34,13 +33,14 @@ const getGoods = () => {
     });
   };
 
-  const getData = (field, value) => {
+  const getData = (field, category) => {
     fetch("db/db.json")
       .then((response) => response.json())
       .then((data) => {
-        const array = field ? data.filter((item) => item[field] === value) : data;
+        const array = field ? data.filter((item) => item[field] === category) : data;
 
         localStorage.setItem("goods", JSON.stringify(array));
+
         if (window.location.pathname !== "/goods.html") {
           window.location.href = "/goods.html";
         } else {
@@ -57,6 +57,7 @@ const getGoods = () => {
       getData(linkField, linkValue);
     });
   });
+
   if (localStorage.getItem("goods") && window.location.pathname === "/goods.html") {
     renderGoods(JSON.parse(localStorage.getItem("goods")));
   }
