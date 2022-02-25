@@ -49,11 +49,11 @@ const getGoods = () => {
       });
   };
 
-  links.forEach((link) => {
-    link.addEventListener("click", (e) => {
+  links.forEach((linkItem) => {
+    linkItem.addEventListener("click", (e) => {
       e.preventDefault();
-      const linkValue = link.textContent;
-      const linkField = link.dataset.field;
+      const linkValue = linkItem.textContent;
+      const linkField = linkItem.dataset.field;
       getData(linkField, linkValue);
     });
   });
