@@ -1,10 +1,6 @@
-const getGoods = () => {
+export const getGoods = () => {
   const links = document.querySelectorAll(".navigation-link");
   const buttonViewAll = document.querySelector(".more");
-
-  // buttonViewAll.addEventListener("click", () => {
-  //   getData();
-  // });
 
   const renderGoods = (goods) => {
     const goodsContainer = document.querySelector(".long-goods-list");
@@ -61,6 +57,11 @@ const getGoods = () => {
   if (localStorage.getItem("goods") && window.location.pathname === "/goods.html") {
     renderGoods(JSON.parse(localStorage.getItem("goods")));
   }
-};
 
-getGoods();
+  if (!!buttonViewAll) {
+    buttonViewAll.addEventListener("click", (e) => {
+      e.preventDefault();
+      getData();
+    });
+  }
+};

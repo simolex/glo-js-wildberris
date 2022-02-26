@@ -1,4 +1,4 @@
-const search = () => {
+export const search = () => {
   const inputSearch = document.querySelector(".search-block > input");
   const buttonSearch = document.querySelector(".search-block > button");
 
@@ -54,5 +54,3 @@ const search = () => {
     console.error(err.message);
   }
 };
-
-search();
